@@ -6,46 +6,121 @@
     <title>Ember-ink-filepicker by mminkoff</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
     <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
+	<link rel="stylesheet" href="stylesheets/ie.css">
+	<![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   </head>
   <body>
+    <script type="text/x-handlebars" data-template-name="application">
       <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/mminkoff/ember-ink-filepicker">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/mminkoff/ember-ink-filepicker/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/mminkoff/ember-ink-filepicker/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
+	<nav>
+	  <li class="fork"><a href="https://github.com/mminkoff/ember-ink-filepicker">View On GitHub</a></li>
+	  <li class="downloads"><a href="https://github.com/mminkoff/ember-ink-filepicker/zipball/master">ZIP</a></li>
+	  <li class="downloads"><a href="https://github.com/mminkoff/ember-ink-filepicker/tarball/master">TAR</a></li>
+	  <li class="title">DOWNLOADS</li>
+	</nav>
       </div><!-- end header -->
 
-    <div class="wrapper">
+      <div class="wrapper">
 
-      <section>
-        <div id="title">
-          <h1>Ember-ink-filepicker</h1>
-          <p></p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/mminkoff">mminkoff</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+	<section>
+	  <div id="title">
+	    <h1>Ember-Ink-Filepicker</h1>
+	    <hr>
+	    <span class="credits left">Project maintained by <a href="https://github.com/mminkoff">mminkoff</a></span>
+	    <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+	  </div>
+	</section>
 
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+      </div>
+      <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+      {{outlet}}
+    </script>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-      </section>
+    <script type="text/x-handlebars" data-template-name="index">
+      <div class="head">
+	<p>
+	  <button class="btn btn-primary" {{action pickWithFilepicker}}>Add an Image</button>
+	</p>
 
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+	{{#if selectedImage.ready}}
+	<p class="selected">
+	  <img {{bind-attr src="selectedImage.mediumImageUrl"}} height=150 {{bind-attr width="selectedImage.mediumWidth"}} />
+	  <a {{bind-attr href="selectedImage.imageUrl"}} target="_blank">View Original</a>
+	</p>
+	{{/if}}
+
+	{{#if errors.length}}
+	<div class="errors">
+	  <h2>Errors</h2>
+	  <ul>
+	    {{#each error in errors}}
+	    <li>{{error}}</li>
+	    {{/each}}
+	  </ul>
+	  <button {{action clearErrors}}>Clear Errors</button>
+	</div>
+	{{/if}}
+      </div>
+
+      {{#if showTable}}
+      <h2>Picked Images:</h2>
+      <table class="table table-bordered">
+	<thead>
+	  <th class="image">thumb</th>
+	  <th class="url">url</th>
+	  <th class="name">name</th>
+	  <th class="size">size</th>
+	  <th class="width">width</th>
+	  <th class="height">height</th>
+	</thead>
+	{{#each}}
+	{{#if ready}}
+	<tr>
+	  <td class="image">
+	    <img {{bind-attr src="thumbImageUrl"}} />
+	  </td>
+	  <td class="url">
+	    <span><a {{action setSelected this}}>{{imageUrl}}</a></span>
+	  </td>
+	  <td class="name">
+	    <span>{{filename}}</span>
+	  </td>
+	  <td class="size">
+	    <span>{{size}} KB</span>
+	  </td>
+	  <td class="width">
+	    <span>{{width}}px</span>
+	  </td>
+	  <td class="height">
+	    <span>{{height}}px</span>
+	  </td>
+	</tr>
+	{{/if}}
+	{{/each}}
+      </table>
+      {{else}}
+      <p class="no_images">No images picked yet</p>
+      {{/if}}
+    </script>
+
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/handlebars/handlebars.js"></script>
+    <script src="bower_components/ember/ember.js"></script>
+    <script src="bower_components/filepicker/filepicker.min.js"></script>
+
+    <script src="javascripts/ember_ink_filepicker.js"></script>
+    <script src="javascripts/router.js"></script>
+    <script src="javascripts/models/ink_filepicker_image.js"></script>
+    <script src="javascripts/controllers/filepicker_controller.js"></script>
+    <script src="javascripts/controllers/index_controller.js"></script>
+    <script src="javascripts/views/index_view.js"></script>
+
   </body>
 </html>

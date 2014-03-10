@@ -390,7 +390,7 @@ fieldset {
 
 /*
  * 1. Corrects color not being inherited in IE6/7/8/9
- * 2. Corrects text not wrapping in FF3 
+ * 2. Corrects text not wrapping in FF3
  * 3. Corrects alignment displayed oddly in IE6/7
  */
 legend {
@@ -605,7 +605,7 @@ strong {
 }
 
 .wrapper {
-  max-width: 650px;
+  max-width: 950px;
   margin: 0 auto;
   position: relative;
   padding: 0 20px;
@@ -709,7 +709,7 @@ dt {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
 }
 #header nav {
-  max-width: 650px;
+  max-width: 950px;
   margin: 0 auto;
   padding: 0 10px;
   background: blue;
@@ -781,15 +781,15 @@ dt {
 }
 
 section {
-  max-width: 650px;
-  padding: 30px 0px 50px 0px;
+  max-width: 950px;
+  padding: 30px 0px 0px 0px;
   margin: 20px 0;
   margin-top: 70px;
 }
 section #title {
   border: 0;
   outline: none;
-  margin: 0 0 50px 0;
+  margin: 0 0 25px 0;
   padding: 0 0 5px 0;
 }
 section #title h1 {
@@ -848,4 +848,51 @@ section #title .credits.right {
   nav {
     display: none;
   }
+}
+
+#IndexView {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+button {
+  color: white;
+  border: 1px solid #6B0B91;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #9E20BD), color-stop(100%, #6B0B91));
+  background: -webkit-linear-gradient(#9E20BD, #6B0B91);
+  background: -moz-linear-gradient(#9E20BD, #6B0B91);
+  background: -o-linear-gradient(#9E20BD, #6B0B91);
+  background: -ms-linear-gradient(#9E20BD, #6B0B91);
+  background: linear-gradient(#9E20BD, #6B0B91);
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -khtml-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
+  -o-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.7);
+  background-color: #9E20BD;
+  padding: 10px 12px;
+  margin-top: 6px;
+  line-height: 14px;
+  font-size: 14px;
+  display: inline-block;
+  text-align: center;
+}
+button:hover {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5F1996), color-stop(100%, #440E7F));
+  background: -webkit-linear-gradient(#5F1996, #440E7F);
+  background: -moz-linear-gradient(#5F1996, #440E7F);
+  background: -o-linear-gradient(#5F1996, #440E7F);
+  background: -ms-linear-gradient(#5F1996, #440E7F);
+  background: linear-gradient(#5F1996, #440E7F);
+  background-color: #6B0B91;
+  border: 1px solid #440E7F;
+  -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
+  -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
+  -o-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
 }

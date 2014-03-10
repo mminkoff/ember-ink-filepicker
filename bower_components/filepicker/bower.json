@@ -1,0 +1,11 @@
+{
+  "name": "filepicker",
+  "version": "1.0.0",
+  "main": [
+    "filepicker.min.js"
+  ],
+  "ignore": [],
+  "dependencies": {},
+  "devDependencies": [],
+  "private": false
+}
