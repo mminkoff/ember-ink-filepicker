@@ -553,6 +553,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p, ul, ol, table, pre, dl {
   margin: 0 0 20px;
+  padding: 0 20px;
 }
 
 h1, h2, h3 {
@@ -564,7 +565,8 @@ h1 {
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 20px;
+  margin: 0 20px 12px;
 }
 
 h4, h5, h6 {
@@ -577,6 +579,9 @@ h3 {
   font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: normal;
   color: #b6b6b6;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-width: 2px 0;
+  padding: 10px 0 13px;
 }
 
 a {
@@ -661,8 +666,9 @@ pre code {
 }
 
 table {
-  width: 100%;
   border-collapse: collapse;
+  max-width: 930px;
+  margin: 0 20px 20px;
 }
 
 th {
@@ -707,6 +713,15 @@ dt {
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   -o-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+}
+#header h1 {
+  position: absolute;
+  left: 50%;
+  margin-left: -200px;
+  width: 400px;
+  text-align: center;
+  padding-top: 4px;
+  font-size: 37px;
 }
 #header nav {
   max-width: 950px;
@@ -784,13 +799,12 @@ section {
   max-width: 950px;
   padding: 30px 0px 0px 0px;
   margin: 20px 0;
-  margin-top: 70px;
+  margin-top: 55px;
 }
 section #title {
   border: 0;
   outline: none;
-  margin: 0 0 25px 0;
-  padding: 0 0 5px 0;
+  margin: 0 0 16px 0;
 }
 section #title h1 {
   font-family: 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -895,4 +909,26 @@ button:hover {
   -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
   -o-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(0, 0, 0, 0);
+}
+
+.selected {
+  margin-bottom: 30px;
+}
+
+.selected img {
+  margin: 5px 13px 0 0;
+}
+
+td.size {
+  white-space: nowrap;
+}
+td.image {
+  width: 50px;
+}
+td.url {
+  min-width: 180px;
+  word-break: break-all;
+}
+td.name {
+  word-break: break-all;
 }

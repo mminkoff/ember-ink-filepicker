@@ -21,6 +21,9 @@
       <div id="header">
 	<nav>
 	  <li class="fork"><a href="https://github.com/mminkoff/ember-ink-filepicker">View On GitHub</a></li>
+	</nav>
+	<h1>Ember-Ink-Filepicker</h1>
+	<nav>
 	  <li class="downloads"><a href="https://github.com/mminkoff/ember-ink-filepicker/zipball/master">ZIP</a></li>
 	  <li class="downloads"><a href="https://github.com/mminkoff/ember-ink-filepicker/tarball/master">TAR</a></li>
 	  <li class="title">DOWNLOADS</li>
@@ -31,11 +34,12 @@
 
 	<section>
 	  <div id="title">
-	    <h1>Ember-Ink-Filepicker</h1>
-	    <hr>
-	    <span class="credits left">Project maintained by <a href="https://github.com/mminkoff">mminkoff</a></span>
-	    <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+	    <span class="credits left">Project maintained by <a href="https://github.com/mminkoff">Max Minkoff</a></span>
+	    <span class="credits right">Hosted on GitHub Pages &mdash; Original Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
 	  </div>
+	  <h3>
+	    This is a relatively simple example of using the fantastic <a href="https://www.inkfilepicker.com/">Ink Filepicker</a> with <a href="http://emberjs.com/">EmberJS</a>. The <a href="javascripts/controllers/filepicker_controller.js">FilepickerController</a> controls picking and setting up the <a href="javascripts/models/ink_filepicker_image.js">image model</a>, which in turn holds the file URL and provides enhancements such as image conversion and watermarking.  I hope you find this helpful!
+	  </h3>
 	</section>
 
       </div>
@@ -45,11 +49,8 @@
 
     <script type="text/x-handlebars" data-template-name="index">
       <div class="head">
-	<p>
-	  <button class="btn btn-primary" {{action pickWithFilepicker}}>Add an Image</button>
-	</p>
-
 	{{#if selectedImage.ready}}
+	<h2>Selected Image</h2>
 	<p class="selected">
 	  <img {{bind-attr src="selectedImage.mediumImageUrl"}} height=150 {{bind-attr width="selectedImage.mediumWidth"}} />
 	  <a {{bind-attr href="selectedImage.imageUrl"}} target="_blank">View Original</a>
@@ -70,11 +71,11 @@
       </div>
 
       {{#if showTable}}
-      <h2>Picked Images:</h2>
+      <h2>Picked Images</h2>
       <table class="table table-bordered">
 	<thead>
 	  <th class="image">thumb</th>
-	  <th class="url">url</th>
+	  <th class="url">url (click to view above)</th>
 	  <th class="name">name</th>
 	  <th class="size">size</th>
 	  <th class="width">width</th>
@@ -84,10 +85,12 @@
 	{{#if ready}}
 	<tr>
 	  <td class="image">
-	    <img {{bind-attr src="thumbImageUrl"}} />
+	    <a {{action setSelected this}} href="#">
+	      <img {{bind-attr src="thumbImageUrl"}} />
+	    </a>
 	  </td>
 	  <td class="url">
-	    <span><a {{action setSelected this}}>{{imageUrl}}</a></span>
+	    <span><a {{action setSelected this}} href="#">{{imageUrl}}</a></span>
 	  </td>
 	  <td class="name">
 	    <span>{{filename}}</span>
@@ -108,6 +111,16 @@
       {{else}}
       <p class="no_images">No images picked yet</p>
       {{/if}}
+
+      <p>
+	<button class="btn btn-primary" {{action pickWithFilepicker}}>
+	  {{#if showTable}}
+	  Add another Image
+	  {{else}}
+	  Add an Image
+	  {{/if}}
+	</button>
+      </p>
     </script>
 
     <script src="bower_components/jquery/jquery.js"></script>

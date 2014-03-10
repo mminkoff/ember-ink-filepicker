@@ -14,7 +14,6 @@
 
       filepicker.pick(
 	{
-	  debug: true,
 	  container: 'window',
 	  mimetypes: this.get(serviceType + 'Types'),
 	  services: this.get(serviceType + 'Services')
