@@ -1,15 +1,15 @@
-(function () {
+((() => {
   'use strict';
 
-  EmberInkFilepicker.Router.map(function () {
+  EmberInkFilepicker.Router.map(() => {
   });
 
   EmberInkFilepicker.IndexRoute = Ember.Route.extend({
-    model: function () {
+    model() {
       return [];
     },
-    setupController: function (controller, model) {
+    setupController(controller, model) {
       controller.set('errors', []);
     }
   });
-})();
+}))();

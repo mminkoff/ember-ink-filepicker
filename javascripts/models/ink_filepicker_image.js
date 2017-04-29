@@ -1,15 +1,15 @@
-(function () {
+((() => {
   'use strict';
 
   // model to hold and enhance a picked image
   EmberInkFilepicker.InkFilepickerImage = Ember.Object.extend({
-    imageReceived: function (InkBlob) {
+    imageReceived(InkBlob) {
       this.set('imageUrl', InkBlob.url);
       this.set('filename', InkBlob.filename);
       this.set('size', Math.round((InkBlob.size / 1024 + 0.00001) * 100) / 100);
     },
 
-    sizeReceived: function (metadata) {
+    sizeReceived(metadata) {
       this.set('width', metadata.width);
       this.set('height', metadata.height);
       this.set('ready', true);
@@ -39,26 +39,26 @@
       return Math.round(this.get('width') * 150 / this.get('height'));
     }).property('width'),
 
-    setupConversion: function (originalUrl, params) {
+    setupConversion(originalUrl, params) {
       params.rotate = 'exif';
       params.cache = true;
       return originalUrl + '/convert?' + jQuery.param(params);
     },
 
-    addWidth: function (params, width) {
+    addWidth(params, width) {
       params.w = width;
       return params;
     },
 
-    addHeight: function (params, height) {
+    addHeight(params, height) {
       params.h = height;
       return params;
     },
 
-    addWatermark: function (params, watermarkUrl) {
+    addWatermark(params, watermarkUrl) {
       params.watermark = watermarkUrl ||  'https://d3urzlae3olibs.cloudfront.net/ddfab59/img/ink/logo_inverted.png';
       params.waterposition = 'bottom,right';
       return params;
     }
   });
-})();
+}))();
