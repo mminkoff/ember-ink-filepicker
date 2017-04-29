@@ -1,4 +1,4 @@
-(function () {
+((() => {
   'use strict';
 
   EmberInkFilepicker.FilepickerController = Ember.ObjectController.extend({
@@ -7,7 +7,7 @@
     imageServices: ['COMPUTER', 'FACEBOOK', 'GMAIL', 'BOX', 'DROPBOX', 'FLICKR', 'PICASA', 'INSTAGRAM'],
     imageTypes: ['image/*'],
 
-    pick: function (serviceType) {
+    pick(serviceType) {
       var _this = this;
 
       serviceType = serviceType || 'image';
@@ -18,19 +18,19 @@
 	  mimetypes: this.get(serviceType + 'Types'),
 	  services: this.get(serviceType + 'Services')
 	},
-	function (InkBlob) {
+	InkBlob => {
 	  _this.get('content').imageReceived(InkBlob);
 
 	  // get image's width and height, then add to controller's content
 	  filepicker.stat(InkBlob,
 			  {width: true, height: true},
-			  function (metadata) {
+			  metadata => {
 			    var pendingImage = _this.get('content');
 			    pendingImage.sizeReceived(metadata);
 			    pendingImage.set('ready', true);
 			    _this.destroy();
 			  },
-			  function (FPError) {
+			  FPError => {
 			    // unless dialog closed by user
 			    if (FPError.code !== 101) {
 			      _this.get('errors').pushObject(FPError.toString());
@@ -39,7 +39,7 @@
 			  }
 			 );
 	},
-	function (FPError) {
+	FPError => {
 	  // unless dialog closed by user
 	  if (FPError.code !== 101) {
 	    _this.get('errors').pushObject(FPError.toString());
@@ -49,4 +49,4 @@
       );
     }
   });
-})();
+}))();
